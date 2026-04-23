@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install playwright && playwright install --with-deps
-RUN pip install langchain
+# RUN pip install 
+# RUN pip install langchain
 # Copy your code
 COPY . .
 
