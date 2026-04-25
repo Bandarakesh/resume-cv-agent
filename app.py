@@ -153,36 +153,6 @@ async def invoke(
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
-# async def run_agent(request: AgentRequest):
-#     """
-#     Main endpoint to trigger your agent logic.
-#     """
-#     # req=AgentRequest(str(input("enter the url: ")))
-#     try:
-#         # We take the URL directly from the request body sent by Streamlit
-#         result = agent.invoke({
-#             "base_url": request.input_text, 
-#             "resume_text="
-#             "messages": [],   
-#             "llm_calls": 0
-#         })
-
-#         return AgentResponse(
-#             status="success",
-#             output={
-#                 "jd": result.get("jd"),
-#                 "tailored_resume": result.get("tailored_resume"),
-#                 "CV": result.get("CV")
-#             },
-#             thread_id=request.thread_id
-#         )
-#     except Exception as e:
-#         print("\n" + "="*50)
-#         print("AGENT CRASHED! Traceback below:")
-#         traceback.print_exc() # This prints the file and line number to your terminal
-#         print("="*50 + "\n")
-#         print(f"Error: {e}")
-#         raise HTTPException(status_code=500, detail=str(e))
 
 # --- 6. Entry point ---
 if __name__ == "__main__":
