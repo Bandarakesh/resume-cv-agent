@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 COPY . .
 
 # Expose port (Cloud Run uses 8080)
-ENV PORT=8080
+ENV PORT=8000
 
 # Start server
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -33,7 +33,7 @@ if generate_btn:
                 data={"job_url":job_url}
                 # 2. Call your FastAPI Backend
                 # Ensure your FastAPI server is running on port 8000
-                api_url = "http://localhost:8000/invoke"
+                api_url = "http://0.0.0.0:8000/invoke"
                 # payload = 
                 
                 response = requests.post(api_url,files=files,data=data)
