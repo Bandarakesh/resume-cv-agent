@@ -18,7 +18,10 @@ The system splits responsibilities across three specialized agent nodes to isola
 ##Demo
 
 
-https://github.com/user-attachments/assets/53b129f5-ec8d-4dda-861f-c9ff755fdb32
+
+https://github.com/user-attachments/assets/a0bcf5dd-1c34-4a3c-bc4f-02c697db65ad
+
+
 
 
 
