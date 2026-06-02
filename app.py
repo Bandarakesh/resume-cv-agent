@@ -7,7 +7,6 @@ from typing import Optional, Dict, Any
 # from langchain.messages import HumanMessage
 from multi_agents import agent_parser,agent_resume_in_json,agent_resume,agent_cv,tool_node,should_continue
 from langgraph.graph import StateGraph,START, END
-from IPython.display import Image, display
 from stategraph import state
 import traceback
 from fastapi import UploadFile, File, Form
@@ -28,16 +27,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# #model intializing
-# model=init_chat_model("gpt-4o-mini", temperature=0)
-# #tools
-
-# tools=[web_scrapper_tool,resume_text_to_yaml_tool]
-# tools_by_name={tool.name:tool for tool in tools}
-# model_with_tools=model.bind_tools(tools)
-
-# --- 2. CORS Configuration ---
-# This allows your Chrome Extension or a React/Vue frontend to call this API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # In production, replace "*" with your actual domain
@@ -56,10 +45,10 @@ def extract_text(file_bytes, filename):
 
     else:
         return ""
-# --- 3. Define Request/Response Schemas ---
+
 class AgentRequest(BaseModel):
     input_text: str
-    thread_id: Optional[str] = "default-thread"  # Useful for LangGraph checkpoints
+    thread_id: Optional[str] = "default-thread" 
     config: Optional[Dict[str, Any]] = {}
 
 class AgentResponse(BaseModel):
@@ -102,14 +91,14 @@ def get_agent():
 agent = get_agent()
 # Show the agent
 print("this is the multi-agent-graph")
-display(Image(agent.get_graph(xray=True).draw_mermaid_png()))
-# Save the graph to a file
-graph_image = agent.get_graph(xray=True).draw_mermaid_png()
+# display(Image(agent.get_graph(xray=True).draw_mermaid_png()))
+# # Save the graph to a file
+# graph_image = agent.get_graph(xray=True).draw_mermaid_png()
 
-with open("agent_graph.png", "wb") as f:
-    f.write(graph_image)
+# with open("agent_graph.png", "wb") as f:
+#     f.write(graph_image)
 
-print("Graph saved to agent_graph.png. Open this file to view it.")
+# print("Graph saved to agent_graph.png. Open this file to view it.")
 
 # --- 5. Endpoints ---
 
@@ -154,11 +143,9 @@ async def invoke(
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
-# --- 6. Entry point ---
+
 if __name__ == "__main__":
     import uvicorn
     # This part is used for local testing: python app.py
     uvicorn.run(app, host="0.0.0.0", port=8000)
-    # -----------------------------
-# if __name__ == "__main__":
-#     app.run(port=5000, debug=True)
+   
